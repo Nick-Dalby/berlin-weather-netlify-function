@@ -4,34 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Berlin is:</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <h1>Berlin is: <span></span></h1>
-  <img alt="weather icon" class="weather-icon" style="opacity: 0" />
-  <body>
-    <script>
-      const getBerlinWeather = async () => {
-        const url = `/.netlify/functions/fetch-weather?lat=52.520008&lon=13.404954`
-        const weatherRequest = await fetch(url)
-        const berlinWeather = await weatherRequest.json()
-        return berlinWeather
-      }
+  
+  <body >
+    <section class="container">
 
-      const displayWeather = (weather) => {
-        const h1span = document.querySelector('h1 span')
-        h1span.textContent = `${Math.round(weather.main.temp)} °C`
-
-        const iconTag = document.querySelector('.weather-icon')
-        iconTag.setAttribute('src', `icons/${weather.weather[0].icon}.png`)
-        iconTag.setAttribute('style', 'opacity: 1')
-      }
-
-      const refreshWeather = async () => {
-        const weather = await getBerlinWeather()
-        displayWeather(weather)
-      }
-
-      refreshWeather()
-    </script>
+      <article>
+        <h1>Berlin is: <span aria-busy="true"></span></h1>
+        <img alt="weather icon" class="weather-icon" style="opacity: 0" />
+      </article>
+    </section>
+<script src="script.js"></script>
   </body>
 </html>
